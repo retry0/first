@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Data 1
+    </ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button (click)="hapusSemuaDataPinjaman()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="tambahPinjaman()">
+    <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+<!--  <ion-list>
+<button ion-button *ngFor="let joke of jokes" (click)="goToCategory(joke)">
+  <ion-icon name="{{joke.icon}}" icon-right></ion-icon>
+  {{joke.category}}
+</button>
+</ion-list>-->
+
+
+
+
+
+
+
+<!--  <!--menampung data dari items menjadi item
+ <ion-card *ngFor="let item of items" >
+   <ion-item>
+      <ion-avatar item-start>
+          <img src="{{item.avatar}}">
+        </ion-avatar>
+    <h2>{{item.first_name}}{{item.last_name}}<br><button ion-button color="primary" button (click)="presentModal()">
+        Details
+      </button></h2>
+   </ion-item>
+
+<ion-card-content>
+  <p>Bithdate: {{item.birhdate}}</p>
+  <p>Email: {{item.email}}</p>
+  <p>Gender: {{item.gender}}</p>
+  <p>Ip Adderess: {{item.ip_address}}</p>
+</ion-card-content>
+ </ion-card>
+
+<!-- tombol fav
+ <ion-fab right bottom >
+   <button ion-fab color="primary" (click)="goToFeedback()">
+     <ion-icon name="add"></ion-icon>
+   </button>
+ </ion-fab>
+
+ <!--button if klik maka function berjalan
+ <div padding>
+   <button ion-button color="primary" block (click)="funLoading()">Show Loading</button>
+ </div>
+ <!--button if klik maka function berjalan
+ <div padding>
+    <button ion-button color="primary" block (click)="showConfirm()">Alerts With Choice</button>
+  </div>
+  <div padding>
+      <button ion-button color="primary"  (click)="goToListCard()">List Card</button>
+    </div>-->
+</ion-content >
