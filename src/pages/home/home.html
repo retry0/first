@@ -16,9 +16,30 @@ Tambah Pinjaman
 
 
 <ion-content padding>
+<h2>List Pinjaman</h2>
+<ion-list>
+  <ion-item sliding *ngFor="let itrm of listDataPeminjaman; let i=index">
+    Jenis: {{item.jenis}}
+    Penerima: {{item.penerima}}
+    Jumlah: {{item.jumlah}}
+    Deskripsi: {{item.deskripsi}}
+    Tanggal Peminjaman: {{item.tanggalPeminjaman}}
+    Tanggal Pengembalian: {{item.tanggalPengembalian}}
+  </ion-item>
+  <ion-item-options side="right">
+    <button ion-button color="primary"  (click)="editData(listDataPeminjaman.rowid)">
+    <ion-icon name="paper"></ion-icon>
+    </button>
+    <button ion-button color="danger" (click)="hapusData(listDataPeminjaman.rowid)">
+      <ion-icon name="trash"></ion-icon>
+    </button>
+  </ion-item-options>
+</ion-list>
+
+
 
   <ion-fab right bottom>
-    <button ion-fab color="primary" (click)="tambahPinjaman()">
+    <button ion-fab color="primary" (click)="addData()">
     <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>

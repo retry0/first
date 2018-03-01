@@ -2,7 +2,6 @@
 //import { JobPage } from './../pages/job/job';
 
 //import { MatakuliahPage } from './../pages/matakuliah/matakuliah';
-import { FavouritePage } from '../pages/favourite/favourite';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -16,14 +15,17 @@ import { HomePage } from '../pages/home/home';
 //import { ListCardPage } from '../pages/list-card/list-card';
 //import { JokeDetailPage } from '../pages/joke-detail/joke-detail';
 import{IonicStorageModule} from '@ionic/storage';
+import {Toast} from '@ionic-native/toast';
+import{SQLite} from '@ionic-native/sqlite';
 import { TambahPinjamPage } from '../pages/tambah-pinjam/tambah-pinjam';
-
+import { EditPinjamPage } from '../pages/edit-pinjam/edit-pinjam';
 @NgModule({
   declarations: [
     //mendeklarsikan page yang dibuat
     MyApp,
     HomePage,
-    TambahPinjamPage
+    TambahPinjamPage,
+    EditPinjamPage
     //FavouritePage,
     //MatakuliahPage,
     //HobiPage,
@@ -47,7 +49,8 @@ import { TambahPinjamPage } from '../pages/tambah-pinjam/tambah-pinjam';
     //mendeklariskan component
     MyApp,
     HomePage,
-    TambahPinjamPage
+    TambahPinjamPage,
+    EditPinjamPage
     //FavouritePage,
     //MatakuliahPage,
     //HobiPage,
@@ -63,7 +66,9 @@ import { TambahPinjamPage } from '../pages/tambah-pinjam/tambah-pinjam';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Toast,
+    SQLite
   ]
 })
 export class AppModule {}

@@ -1,0 +1,46 @@
+<!--
+  Generated template for the EditPinjamPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>edit-pinjam</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<h2>Edit Pinjaman</h2>
+<form (ngSubmit)="updateData()">
+  <ion-item>
+    <ion-label>Jenis</ion-label>
+    <ion-input type="text" placeholder="Jenis" [(ngModel)]="data.jenis" name="jenis" required=""></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Penerima</ion-label>
+    <ion-input type="text" placeholder="Penerima" [(ngModel)]="data.penerima" name="penerima" required=""></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Jumlah</ion-label>
+    <ion-input type="text" placeholder="Jumlah" [(ngModel)]="data.jumlah" name="jumlah" required=""></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Deskripsi</ion-label>
+    <ion-input type="text" placeholder="Deskripsi" [(ngModel)]="data.deskripsi" name="deskripsi" required=""></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Tanggal Peminjaman</ion-label>
+    <ion-datetime displayFormat="MM/DD/YYYY"  [(ngModel)]="data.tanggalPeminjaman" name="tanggalPeminjaman" required=""></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Tanggal Pengembalian</ion-label>
+    <ion-datetime displayFormat="MM/DD/YYYY"  [(ngModel)]="data.tanggalPengembalian" name="tanggalPengembalian" required=""></ion-datetime>
+  </ion-item>
+  <ion-input type="hidden" [(ngModel)]="data.rowid" name="rowid"></ion-input>
+  <button ion-button type="submit" block>Ubah Data</button>
+</form>
+</ion-content>

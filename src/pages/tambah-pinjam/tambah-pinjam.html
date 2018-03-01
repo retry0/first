@@ -7,47 +7,42 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>tambahPinjam</ion-title>
-    <ion-buttons end>
-      <button ion button (click)="simpanData()">
-        <ion-icon name="md-checkmark"></ion-icon>
-      </button>
-    </ion-buttons>
+    <ion-title>My Expense</ion-title>
   </ion-navbar>
+
 </ion-header>
 
-
 <ion-content padding>
-  <ion-list>
+  <h2>Add Data</h2>
+  <form (ngSubmit)="simpanData()">
     <ion-item>
-      <ion-label stacked>Jenis</ion-label>
-      <ion-select [(ngModel)]="jenis">
+      <ion-label>Jenis</ion-label>
+      <ion-select [(ngModel)]="data.jenis" name="jenis" required="">
         <ion-option value="Saya Meminjamkan"> Saya Meminjamkan</ion-option>
         <ion-option value="Saya Meminjam"> Saya Meminjam</ion-option>
         <ion-option value="Saya Pinjaman dari Bank"> Pinjaman dari Bank</ion-option>
-
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label stacked>Peneriman Pembayaran</ion-label>
-      <ion-input type="text" [(ngModel)]="penerima"></ion-input>
+      <ion-label>Penerima</ion-label>
+      <ion-input type="text" placeholder="Penerima" [(ngModel)]="data.penerima" name="penerima" required="" ></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label stacked>Jumlah</ion-label>
-        <ion-input type="text" [(ngModel)]="jumlah"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label stacked>Deskripsi</ion-label>
-        <ion-input type="text" [(ngModel)]="deskripsi"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label stacked>Tanggal</ion-label>
-              <ion-input type="date" [(ngModel)]="tanggalPeminjaman"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label stacked>Tanggal Mengembalikan
-              </ion-label>
-              <ion-input displayFormat="MM/DD/YYYY" type="date" [(ngModel)]="tanggalPengembalian"></ion-input>
-            </ion-item>
-  </ion-list>
+      <ion-label>Jumlah</ion-label>
+      <ion-input type="text" placeholder="Jumlah" [(ngModel)]="data.jumlah" name="jumlah" required="" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Desripsi</ion-label>
+      <ion-input type="text" placeholder="Deskripsi" [(ngModel)]="data.deskripsi" name="deskripsi" required="" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Tanggal Peminjaman</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="data.tanggalPeminjaman" name="tanggalPeminjaman" required=""></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Tanggal Pengembalian</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="data.tanggalPengembalian" name="tanggalPengembalian" required=""></ion-datetime>
+    </ion-item>
+    <button ion-button type="submit" block>Save Data</button>
+  </form>
 </ion-content>

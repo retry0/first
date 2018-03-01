@@ -3,7 +3,6 @@ import { Nav,Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
-import { ListCardPage } from '../pages/list-card/list-card';
 import { TambahPinjamPage } from '../pages/tambah-pinjam/tambah-pinjam';
 @Component({
   templateUrl: 'app.html'
@@ -22,6 +21,13 @@ export class MyApp {
       {title:  'Home',component:HomePage,icon:'home'},
       {title:  'Tambah Pinjaman',component:  TambahPinjamPage,  icon:'md-add-circle'}
     ];
+
+    if(platform.is('cordova')){
+
+    }
+    else{
+
+    }
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

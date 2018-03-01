@@ -1,11 +1,10 @@
-import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
-const  KEY_DATA_PINJAMAN ="dataPinjaman";
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import {Toast} from  '@ionic-native/toast';
 /**
  * Generated class for the TambahPinjamPage page.
- *
+ * 
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
@@ -16,21 +15,69 @@ const  KEY_DATA_PINJAMAN ="dataPinjaman";
   templateUrl: 'tambah-pinjam.html',
 })
 export class TambahPinjamPage {
-  public listDataPinjaman: any;
+  data = { jenis:"",
+  penerima:"",
+    jumlah:"",
+    deskripsi:"",
+    tanggalPeminjaman:"",
+    tanggalPengembalian:""};
+ /* public listDataPinjaman: any;
   jenis:any=null;
   penerima:any=null;
   jumlah:any=null;
   deskripsi:any=null;
   tanggalPeminjaman:any=null;
-  tanggalPengembalian:any=null;
+  tanggalPengembalian:any=null;*/
 
 
   constructor(public navCtrl: NavController,
-     public navParams: NavParams,
-    private storge:  Storage) {
-      this.ambilDataPinjaman();
+   public navParams: NavParams,
+    private sqlite:  SQLite,
+    private toast: Toast,
+    public plt: Platform){
+      if(this.plt.is('cordova')){
+      }
+      else{
+
+      }
+    }
+
+  simpanData(){
+    this.sqlite.create({
+      name:  'ionicdb.db',
+      location:  'default'
+    }).then((db:  SQLiteObject)=>{
+      db.executeSql('INSERT INTO listDataPeminjaman VALUES(NULL,?,?,?,?,?,?)',
+      [this.data.jenis,this.data.penerima,  this.data.jumlah,  this.data.deskripsi,  this.data.tanggalPeminjaman,  this.data.tanggalPengembalian])
+      .then(res=>{
+        console.log(res);
+        this.toast.show('Data Berhasil diSimpan',  '5000',  'center').subscribe(
+          toast=>{
+            this.navCtrl.popToRoot();
+          }
+        );
+      })
+      .catch(e=>{
+        console.log(e);
+        this.toast.show(e,  '5000',  'center').subscribe(
+          toast=>{
+            console.log(toast);
+          }
+        );
+      });
+    }).catch(e=>{
+      console.log(e);
+      this.toast.show(e,  '5000','center').subscribe(
+        toast=>{
+          console.log(toast);
+        }
+      );
+    });
   }
-ambilDataPinjaman(){
+
+
+
+/*ambilDataPinjaman(){
   this.storge.get(KEY_DATA_PINJAMAN).then((data)=>{
     if(data !=null){
       this.listDataPinjaman  =  JSON.parse(data);
@@ -56,6 +103,6 @@ simpanData(){
   this.storge.set(KEY_DATA_PINJAMAN,
     JSON.stringify(this.listDataPinjaman));
     this.navCtrl.setRoot(HomePage);
-}
+}*/
 
 }
