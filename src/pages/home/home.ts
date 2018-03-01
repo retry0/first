@@ -13,16 +13,15 @@ import data from '../../data/data-jokes';
 import { FeedbackPage } from '../feedback/feedback';
 //import function pop up menggunakan dari ionic-angular
 import { ModalController } from 'ionic-angular/components/modal/modal-controller';
-import { ModalPage } from '../modal/modal';
 //import function peringatan(alert) menggunakan dari ionic-angular
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 //import function loading screen menggunakan dari ionic-angular
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
-import { ListCardPage } from '../list-card/list-card';
 import { JokeDetailPage } from '../joke-detail/joke-detail';
 import { Storage } from '@ionic/storage';
 import { TambahPinjamPage } from '../tambah-pinjam/tambah-pinjam';
 
+const  KEY_DATA_PINJAMAN ="dataPinjaman";
 
 
 @Component({
@@ -33,8 +32,12 @@ export class HomePage {
   //deaklari variabel item tipe any untuk menampung data
   //items:  any;
   //jokes:any;
+  public listDataPinjaman: any;
+
   constructor(public NavCtrl: NavController,public  modalCtrl:  ModalController,public alertCtrl:  AlertController, public loadCtrl: LoadingController,
-  public storage: Storage){
+  private storage: Storage){
+    this.ambilDataPinjaman();
+
     //deklarasi variabel items sama dengan data
     //this.jokes  = data;
    // console.log(this.jokes);
@@ -42,19 +45,44 @@ export class HomePage {
     //this.items =  data;
     //debug console  data
     //console.log(this.items);
-  this.storage.set('name','mn');
-  this.storage.get('name').then((val)=>{
-    console.log('Your name is',val);
-  });
+
+this.storage.get(this.listDataPinjaman).then((e)=>{
+  console.log(e);
+});
   }
+//function ambil data
+  ambilDataPinjaman(){
+    this.storage.get(KEY_DATA_PINJAMAN).then((data)=>{
+      if(data !=null){
+        this.listDataPinjaman  =  JSON.parse(data);
+        console.log(this.listDataPinjaman);
+      }
+      else{
+        //jika data kosong maka console menampilkan tulisan empty
+        this.listDataPinjaman  =[];
+        console.log('empty');
+      }
+    })
+  }
+
+  hapusDataPinjaman(item) {
+    var temp = this.listDataPinjaman.indexOf(item);
+    this.listDataPinjaman.splice(temp, 1);
+    this.storage.set(KEY_DATA_PINJAMAN,
+    JSON.stringify(this.listDataPinjaman));
+    }
+    hapusSemuaDataPinjaman() {
+    this.storage.remove(KEY_DATA_PINJAMAN);
+    this.listDataPinjaman = [];
+    }
 
   tambahPinjaman(){
     this.NavCtrl.push(TambahPinjamPage);
   }
 
-  goToCategory(joke){
-    this.NavCtrl.push(JokeDetailPage,joke);
-  }
+
+
+
 
   /*//fucntion unttuk memmunculkan Feedback Page
   goToFeedback(){
