@@ -17,6 +17,7 @@ import { HomePage } from '../pages/home/home';
 //import { JokeDetailPage } from '../pages/joke-detail/joke-detail';
 import{IonicStorageModule} from '@ionic/storage';
 import { TambahPinjamPage } from '../pages/tambah-pinjam/tambah-pinjam';
+import { HutangProvider } from '../providers/hutang/hutang';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { TambahPinjamPage } from '../pages/tambah-pinjam/tambah-pinjam';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    HutangProvider
   ]
 })
 export class AppModule {}

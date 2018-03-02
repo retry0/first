@@ -1,7 +1,8 @@
-import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { HutangProvider } from '../../providers/hutang/hutang';
+import { HomePage } from '../home/home';
 const  KEY_DATA_PINJAMAN ="dataPinjaman";
 /**
  * Generated class for the TambahPinjamPage page.
@@ -28,7 +29,8 @@ export class TambahPinjamPage {
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
     private storge:  Storage,
-    public toast: ToastController) {
+    public toast: ToastController,
+    public hutang: HutangProvider) {
       this.ambilDataPinjaman();
   }
 ambilDataPinjaman(){
@@ -56,20 +58,9 @@ simpanData(){
     tanggalPengembalian:this.tanggalPengembalian
   }
   //data dari varibel function ini kemudian akan dikirim ke variabel globalnya
-  this.listDataPinjaman.push(tempData);
-  //set data const atau keyyan ke variabel listDataPinjaman
-  this.storge.set(KEY_DATA_PINJAMAN,
-    JSON.stringify(this.listDataPinjaman));
-    //kalau sukses diarahkan ke home
-    //variabel untuk toast
-    let toast=this.toast.create({
-      //pesang jika berhasil disimpan
-      message:  'Data Berhasil disimpan',
-      duration:  5000
-    });
-    toast.present();
-//akan membuka home page
-    this.navCtrl.setRoot(HomePage);
+  this.hutang.simpanData(tempData);
+  this.hutang.notifikasi();
+  this.navCtrl.setRoot(HomePage)
 }
 
 }

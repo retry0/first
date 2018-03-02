@@ -20,8 +20,9 @@ import { LoadingController } from 'ionic-angular/components/loading/loading-cont
 import { JokeDetailPage } from '../joke-detail/joke-detail';
 import { Storage } from '@ionic/storage';
 import { TambahPinjamPage } from '../tambah-pinjam/tambah-pinjam';
+import { HutangProvider } from '../../providers/hutang/hutang';
 
-const  KEY_DATA_PINJAMAN ="dataPinjaman";
+
 
 
 @Component({
@@ -34,9 +35,13 @@ export class HomePage {
   //jokes:any;
   public listDataPinjaman: any;
 
-  constructor(public NavCtrl: NavController,public  modalCtrl:  ModalController,public alertCtrl:  AlertController, public loadCtrl: LoadingController,
-  private storage: Storage){
-    this.ambilDataPinjaman();
+  constructor(public NavCtrl: NavController,
+    public  modalCtrl:  ModalController,public alertCtrl:  AlertController, public loadCtrl: LoadingController,
+  private storage: Storage,
+  public hutang:  HutangProvider){
+   setTimeout(()=>{
+     this.listDataPinjaman = this.hutang.listDataPinjaman;
+   },1000);
 
     //deklarasi variabel items sama dengan data
     //this.jokes  = data;
@@ -50,30 +55,20 @@ this.storage.get(this.listDataPinjaman).then((e)=>{
   console.log(e);
 });
   }
-//function ambil data
-  ambilDataPinjaman(){
-    this.storage.get(KEY_DATA_PINJAMAN).then((data)=>{
-      if(data !=null){
-        this.listDataPinjaman  =  JSON.parse(data);
-        console.log(this.listDataPinjaman);
-      }
-      else{
-        //jika data kosong maka console menampilkan tulisan empty
-        this.listDataPinjaman  =[];
-        console.log('empty');
-      }
-    })
-  }
+
 
   hapusDataPinjaman(item) {
-    var temp = this.listDataPinjaman.indexOf(item);
-    this.listDataPinjaman.splice(temp, 1);
-    this.storage.set(KEY_DATA_PINJAMAN,
-    JSON.stringify(this.listDataPinjaman));
+    this.hutang.hapusData(item);
     }
-    hapusSemuaDataPinjaman() {
-    this.storage.remove(KEY_DATA_PINJAMAN);
-    this.listDataPinjaman = [];
+
+    hapusData(item) {
+      var temp = this.listDataPinjaman.index0f(item);
+      JSON.stringify(this.listDataPinjaman);
+    }
+
+    hapusSemuaDataPinjaman(){
+        this.hutang.hapusSemuaData();
+        this.listDataPinjaman = [];
     }
 
   tambahPinjaman(){

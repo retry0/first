@@ -17,27 +17,21 @@ Tambah Pinjaman
 
 <ion-content padding>
   <h2>List Data Peminjaman</h2>
-<ion-list>
-  <ion-card *ngFor="let item of listDataPinjaman">
-    <ion-item nopadding>
-    <p><strong>Jenis</strong>: {{item.jenis}}</p>
-   <p><strong> Penerima</strong>: {{item.penerima}}</p>
-    <p><strong>Jumlah</strong>{{item.jumlah}}</p>
-    <p><strong>Deskripsi</strong>: {{item.deskripsi}}</p>
-    <p><strong>Tanggal Peminjaman</strong>: {{item.tanggalPeminjaman}}</p>
-    <p><strong>Tanggal Pengembalian</strong> :{{item.tanggalPengembalian}}</p>
-    <button ion-button color="danger" (click)="hapusDataPinjaman(item)" block side="right">
-        <ion-icon name="trash"></ion-icon>
-      </button>
-  </ion-item>
-  </ion-card>
-</ion-list>
-</ion-content>
   <ion-fab right bottom>
     <button ion-fab color="primary" (click)="tambahPinjaman()">
     <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>
+  <ion-card *ngFor="let item of listDataPinjaman">
+    <ion-item >
+      <span item-left> {{item.penerima | uppercase}}</span>
+    <button ion-button color="danger" (click)="hapusDataPinjaman(item)" block>
+        <ion-icon name="trash"></ion-icon>
+      </button>
+  </ion-item>
+  </ion-card>
+</ion-content>
+
 <!--  <ion-list>
 <button ion-button *ngFor="let joke of jokes" (click)="goToCategory(joke)">
   <ion-icon name="{{joke.icon}}" icon-right></ion-icon>
