@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+        List Pengeluaran
+     </ion-title>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-buttons end>
+        <button ion-button (click)="hapusSemuaDataPengeluaran()">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+
+  <ion-content padding>
+    <h2>List Data Pengeluaran</h2>
+    <ion-fab right bottom>
+      <button ion-fab color="primary" (click)="tambahPengeluaran()">
+      <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-fab>
+    <ion-card *ngFor="let item of listDataPengeluaran">
+      <ion-item >
+        <span item-left> {{item.penglu | uppercase}}</span>
+      <button ion-button color="danger" (click)="hapusDataPengeluaran(peng)" block>
+          <ion-icon name="trash"></ion-icon>
+        </button>
+    </ion-item>
+    </ion-card>
+  </ion-content>
+

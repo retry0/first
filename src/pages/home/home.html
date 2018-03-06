@@ -1,35 +1,19 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-Tambah Pinjaman
-   </ion-title>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-buttons end>
-      <button ion-button (click)="hapusSemuaDataPinjaman()">
-        <ion-icon name="trash"></ion-icon>
+    <ion-navbar>
+      <ion-title>
+ Home
+     </ion-title>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
       </button>
-    </ion-buttons>
-  </ion-navbar>
-</ion-header>
+    </ion-navbar>
+  </ion-header>
+
 
 
 <ion-content padding>
-  <h2>List Data Peminjaman</h2>
-  <ion-fab right bottom>
-    <button ion-fab color="primary" (click)="tambahPinjaman()">
-    <ion-icon name="add"></ion-icon>
-    </button>
-  </ion-fab>
-  <ion-card *ngFor="let item of listDataPinjaman">
-    <ion-item >
-      <span item-left> {{item.penerima | uppercase}}</span>
-    <button ion-button color="danger" (click)="hapusDataPinjaman(item)" block>
-        <ion-icon name="trash"></ion-icon>
-      </button>
-  </ion-item>
-  </ion-card>
+  <button ion-button color="green" (click)="listPeminjaman()">List Data Peminjaman</button>
+  <button ion-button color="danger" (click)="listPengeluaran()">List Data Pengeluaran</button>
 </ion-content>
 
 <!--  <ion-list>

@@ -1,3 +1,5 @@
+//import page listpengeluaran
+import { ListPengeluaranPage } from './../list-pengeluaran/list-pengeluaran';
 //import { FavouritePageModule } from './../favourite/favourite.module';
 //import { JobPage } from './../job/job';
 //import { MatakuliahPage } from './../matakuliah/matakuliah';
@@ -8,20 +10,18 @@ import { NavController } from 'ionic-angular';
 
 //import data  dari data.ts
 //import data from '../../data/data';
-import data from '../../data/data-jokes';
+//import data from '../../data/data-jokes';
 
-import { FeedbackPage } from '../feedback/feedback';
+//import { FeedbackPage } from '../feedback/feedback';
 //import function pop up menggunakan dari ionic-angular
 import { ModalController } from 'ionic-angular/components/modal/modal-controller';
 //import function peringatan(alert) menggunakan dari ionic-angular
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 //import function loading screen menggunakan dari ionic-angular
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
-import { JokeDetailPage } from '../joke-detail/joke-detail';
-import { Storage } from '@ionic/storage';
-import { TambahPinjamPage } from '../tambah-pinjam/tambah-pinjam';
-import { HutangProvider } from '../../providers/hutang/hutang';
-
+//import { JokeDetailPage } from '../joke-detail/joke-detail';
+//import listpeminjaman
+import { ListPeminjamanPage } from '../list-peminjaman/list-peminjaman';
 
 
 
@@ -33,47 +33,22 @@ export class HomePage {
   //deaklari variabel item tipe any untuk menampung data
   //items:  any;
   //jokes:any;
-  public listDataPinjaman: any;
-
   constructor(public NavCtrl: NavController,
     public  modalCtrl:  ModalController,public alertCtrl:  AlertController, public loadCtrl: LoadingController,
-  private storage: Storage,
-  public hutang:  HutangProvider){
-   setTimeout(()=>{
-     this.listDataPinjaman = this.hutang.listDataPinjaman;
-   },1000);
-
-    //deklarasi variabel items sama dengan data
-    //this.jokes  = data;
-   // console.log(this.jokes);
-
-    //this.items =  data;
-    //debug console  data
-    //console.log(this.items);
-
-this.storage.get(this.listDataPinjaman).then((e)=>{
-  console.log(e);
-});
+  ){
   }
-
-
-  hapusDataPinjaman(item) {
-    this.hutang.hapusData(item);
-    }
-
-    hapusData(item) {
-      var temp = this.listDataPinjaman.index0f(item);
-      JSON.stringify(this.listDataPinjaman);
-    }
-
-    hapusSemuaDataPinjaman(){
-        this.hutang.hapusSemuaData();
-        this.listDataPinjaman = [];
-    }
-
-  tambahPinjaman(){
-    this.NavCtrl.push(TambahPinjamPage);
+//untuk memunculkan page list peminjaman
+  listPeminjaman(){
+    this.NavCtrl.push(ListPeminjamanPage);
   }
+  //untuk memunculkan page list pengeluaran
+  listPengeluaran(){
+    this.NavCtrl.push(ListPengeluaranPage);
+  }
+}
+
+
+
 
 
 
@@ -180,4 +155,4 @@ this.storage.get(this.listDataPinjaman).then((e)=>{
         //job: "Back End Developer"
      // })
    // }*/
-}
+

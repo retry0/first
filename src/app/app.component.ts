@@ -3,8 +3,9 @@ import { Nav,Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
-import { ListCardPage } from '../pages/list-card/list-card';
+//import { ListCardPage } from '../pages/list-card/list-card';
 import { TambahPinjamPage } from '../pages/tambah-pinjam/tambah-pinjam';
+import { TambahPengeluaranPage } from '../pages/tambah-pengeluaran/tambah-pengeluaran';
 @Component({
   templateUrl: 'app.html'
 })
@@ -20,7 +21,9 @@ export class MyApp {
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     this.pages=[
       {title:  'Home',component:HomePage,icon:'home'},
-      {title:  'Tambah Pinjaman',component:  TambahPinjamPage,  icon:'md-add-circle'}
+      {title:  'Tambah Pinjaman',component:  TambahPinjamPage,  icon:'md-add-circle'},
+      {title:  'Tambah Pengeluaran',component:  TambahPengeluaranPage,  icon:'md-add-circle'}
+
     ];
 
     platform.ready().then(() => {

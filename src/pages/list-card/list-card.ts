@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 //import data2 dan mendeklarasikan sebgai data2
-import data from '../../data/data2';
-import data2 from '../../data/data2';
+//import data from '../../data/data2';
+//import data2 from '../../data/data2';
 /**
  * Generated class for the ListCardPage page.
  *
@@ -18,13 +18,13 @@ import data2 from '../../data/data2';
 })
 export class ListCardPage {
   //deklarasi data_2 dan bertipe any
-  data_2: any;
+  //data_2: any;
   constructor(public navCtrl: NavController, public navParams: NavParams)
   {
     //data2 sama dengan yang diimport
-this.data_2 = data2;
+//this.data_2 = data2;
 //debug console untuk data2
-console.log(this.data_2);
+//console.log(this.data_2);
   }
 
 

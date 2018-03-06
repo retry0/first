@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
+
+//import provider hutang yang berfungsi sebagai model
 import { HutangProvider } from '../../providers/hutang/hutang';
 import { HomePage } from '../home/home';
-const  KEY_DATA_PINJAMAN ="dataPinjaman";
 /**
  * Generated class for the TambahPinjamPage page.
  *
@@ -17,7 +17,7 @@ const  KEY_DATA_PINJAMAN ="dataPinjaman";
   templateUrl: 'tambah-pinjam.html',
 })
 export class TambahPinjamPage {
-  public listDataPinjaman: any;
+  //deklarsi varibel data untuk form tambah pinjaman
   jenis:any=null;
   penerima:any=null;
   jumlah:any=null;
@@ -28,28 +28,17 @@ export class TambahPinjamPage {
 
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
-    private storge:  Storage,
     public toast: ToastController,
+        //deklarsi hutang yang diambil dari import hutangProvider diatas
     public hutang: HutangProvider) {
-      this.ambilDataPinjaman();
   }
-ambilDataPinjaman(){
-  this.storge.get(KEY_DATA_PINJAMAN).then((data)=>{
-    if(data !=null){
-      this.listDataPinjaman  =  JSON.parse(data);
-      console.log(this.listDataPinjaman);
-    }
-    else{
-      this.listDataPinjaman  =[];
-      console.log('empty');
-    }
-  })
-}
+
+
 //function simpan data
 simpanData(){
   //variabel yang akan memanmpung data pada function ini
   var tempData  =  {
-    //nama kolom ditable
+    //nama  variabel yang sudah didefinisikan diatas
     jenis:this.jenis,
     penerima:this.penerima,
     jumlah:this.jumlah,

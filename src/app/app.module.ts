@@ -1,8 +1,9 @@
+import { ListPeminjamanPage } from './../pages/list-peminjaman/list-peminjaman';
 //import { FeedbackPage } from './../pages/feedback/feedback';
 //import { JobPage } from './../pages/job/job';
 
 //import { MatakuliahPage } from './../pages/matakuliah/matakuliah';
-import { FavouritePage } from '../pages/favourite/favourite';
+//import { FavouritePage } from '../pages/favourite/favourite';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -18,13 +19,18 @@ import { HomePage } from '../pages/home/home';
 import{IonicStorageModule} from '@ionic/storage';
 import { TambahPinjamPage } from '../pages/tambah-pinjam/tambah-pinjam';
 import { HutangProvider } from '../providers/hutang/hutang';
-
+import { PengeluaranProvider } from '../providers/pengeluaran/pengeluaran';
+import { TambahPengeluaranPage } from '../pages/tambah-pengeluaran/tambah-pengeluaran';
+import { ListPengeluaranPage } from '../pages/list-pengeluaran/list-pengeluaran';
 @NgModule({
   declarations: [
     //mendeklarsikan page yang dibuat
     MyApp,
     HomePage,
-    TambahPinjamPage
+    TambahPinjamPage,
+    TambahPengeluaranPage,
+    ListPeminjamanPage,
+    ListPengeluaranPage
     //FavouritePage,
     //MatakuliahPage,
     //HobiPage,
@@ -48,7 +54,10 @@ import { HutangProvider } from '../providers/hutang/hutang';
     //mendeklariskan component
     MyApp,
     HomePage,
-    TambahPinjamPage
+    TambahPinjamPage,
+    TambahPengeluaranPage,
+    ListPeminjamanPage,
+    ListPengeluaranPage
     //FavouritePage,
     //MatakuliahPage,
     //HobiPage,
@@ -65,7 +74,8 @@ import { HutangProvider } from '../providers/hutang/hutang';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    HutangProvider
+    HutangProvider,
+    PengeluaranProvider,
   ]
 })
 export class AppModule {}
