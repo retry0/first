@@ -43,8 +43,8 @@ export class ListPengeluaranPage {
     this.pengeluaran.hapusData(peng);
   }
       //function hapus  data dengan object pemg
-  hapusDataPeng(item){
-    var  temp = this.listDataPengeluaran.index0f(item);
+  hapusDataPeng(peng){
+    var  temp = this.listDataPengeluaran.index0f(peng);
     this.listDataPengeluaran.splice(temp,1);
     this.listDataPengeluaran.set(KEY_DATA_PENGELUARAN,
     JSON.stringify(this.listDataPengeluaran));

@@ -51,7 +51,7 @@ export class HutangProvider {
   //deklarasi function hapus data dengan variabel item
   hapusData(item){
     //deklarai variabel temp sama dengan listDataPinjaman
-    var temp = this.listDataPinjaman.index0f(item);
+    var temp = this.listDataPinjaman.indexOf(item);
     //akan mengaapsu satu array saja
     this.listDataPinjaman.splice(temp, 1);
   }

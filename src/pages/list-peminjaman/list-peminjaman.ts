@@ -54,6 +54,7 @@ export class ListPeminjamanPage {
     //ambil function hapusData dari provider hutang dengan object item
     this.hutang.hapusData(item);
     }
+
       //function hapus  data dengan object item
     hapusData(item) {
       //deklarasi variabel temp untuk penyimpan sementara sama daengan variabel listDataPeminjaman dengan object item
